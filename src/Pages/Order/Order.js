@@ -31,7 +31,7 @@ const Order = () => {
     }, [user])
     return (
         <div>
-            <h2>Your orders: {orders.length}</h2>
+            <h2>Your orders -- {orders.length}</h2>
 
         </div>
     );
