@@ -31,7 +31,7 @@ const AddService = () => {
                 <input className='mb-2' placeholder='Photo URL' type="text" {...register("img")} />
                 <input type="submit" value="Add Service" />
             </form>
-        </div> 
+        </div>
     );
 };
 
