@@ -45,7 +45,7 @@ const Login = () => {
         const password = passwordRef.current.value;
 
         await signInWithEmailAndPassword(email, password);
-        const {data} = await axios.post('http://localhost:5000/login', {email});
+        const { data } = await axios.post('https://arcane-caverns-54979.herokuapp.com/login', { email });
         localStorage.setItem('accessToken', data.accessToken);
         navigate(from, { replace: true });
     }
@@ -60,7 +60,7 @@ const Login = () => {
             await sendPasswordResetEmail(email);
             toast('Sent email');
         }
-        else{
+        else {
             toast('please enter your email address');
         }
     }
@@ -84,7 +84,7 @@ const Login = () => {
             <p>New to Genius Car? <Link to="/register" className='text-primary pe-auto text-decoration-none' onClick={navigateRegister}>Please Register</Link> </p>
             <p>Forget Password? <button className='btn btn-link text-primary pe-auto text-decoration-none' onClick={resetPassword}>Reset Password</button> </p>
             <SocialLogin></SocialLogin>
-            
+
         </div>
     );
 };

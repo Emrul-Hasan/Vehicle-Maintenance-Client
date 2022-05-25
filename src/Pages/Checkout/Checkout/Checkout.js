@@ -7,10 +7,10 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const Checkout = () => {
-    const {serviceId} = useParams();
+    const { serviceId } = useParams();
     const [service] = useServiceDetail(serviceId);
     const [user] = useAuthState(auth);
-    
+
     // const [user, setUser] = useState({
     //     name: 'Akbar The Great',
     //     email: 'akbar@momo.taj',
@@ -27,30 +27,30 @@ const Checkout = () => {
     //     setUser(newUser);
     // }
 
-    const handlePlaceOrder = event =>{
+    const handlePlaceOrder = event => {
         event.preventDefault();
         const order = {
-            email:user.email,
+            email: user.email,
             service: service.name,
             serviceId: serviceId,
             address: event.target.address.value,
             phone: event.target.phone.value
         }
-        axios.post('http://localhost:5000/order', order)
-        .then(response =>{
-            const {data} = response;
-            if(data.insertedId){
-                toast('Your order is booked!!!');
-                event.target.reset();
-            }
-        })
+        axios.post('https://arcane-caverns-54979.herokuapp.com/order', order)
+            .then(response => {
+                const { data } = response;
+                if (data.insertedId) {
+                    toast('Your order is booked!!!');
+                    event.target.reset();
+                }
+            })
     }
 
     return (
         <div className='w-50 mx-auto'>
             <h2>Please Order: {service.name}</h2>
             <form onSubmit={handlePlaceOrder}>
-                <input className='w-100 mb-2' type="text" value={user?.displayName} name="name" placeholder='name' required readOnly disabled/>
+                <input className='w-100 mb-2' type="text" value={user?.displayName} name="name" placeholder='name' required readOnly disabled />
                 <br />
                 <input className='w-100 mb-2' type="email" value={user?.email} name="email" placeholder='email' required readOnly disabled />
                 <br />

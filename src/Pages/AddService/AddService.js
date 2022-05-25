@@ -3,10 +3,10 @@ import { useForm } from "react-hook-form";
 
 const AddService = () => {
     const { register, handleSubmit } = useForm();
-    
+
     const onSubmit = data => {
         console.log(data);
-        const url = `http://localhost:5000/service`;
+        const url = `https://arcane-caverns-54979.herokuapp.com/service`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -14,10 +14,10 @@ const AddService = () => {
             },
             body: JSON.stringify(data)
         })
-        .then(res=> res.json())
-        .then(result =>{
-            console.log(result);
-        } )
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+            })
     };
 
 
